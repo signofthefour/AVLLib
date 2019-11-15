@@ -9,6 +9,7 @@ using namespace std;
 
 int main() {
     Node<int> a(7);
-    cout << a;
+    Node<int> b(a);
+    AVLTree<int> avl;
     return 0;
 }

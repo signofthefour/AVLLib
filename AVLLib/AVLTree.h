@@ -20,6 +20,8 @@
 #include <iostream>
 #include "Node.h"
 
+#define max(a, b)   (a > b) ? a : b
+
 using namespace std;
 
 /**TreeException
@@ -38,4 +40,43 @@ public:
     string& getErrorText() { return _text; }
 };
 
+template<typename T>
+class AVLTree {
+    Node<T>* root;
+    // Get height of a node from avl instance
+    int     height(Node<T>* node) {
+        if (node == NULL) return 0;
+        return node.getHeight();
+    }
+    Node<T>&   rightRotate(Node<T>*& node);
+    Node<T>&   leftRotate(Node<T>*& node);
+    Node<T>&   getBalance(Node<T>*& node);
+public:
+    Node&   insert(T data) {
+        
+    }
+};
+
+/**
+ * T1, T2, T3 and T4 are subtrees.
+         z                                      y 
+        / \                                   /   \
+       y   T4      Right Rotate (z)          x      z
+      / \          - - - - - - - - ->      /  \    /  \ 
+     x   T3                               T1  T2  T3  T4
+    / \
+  T1   T2
+*/
+// TODO: Implement Right rotate at a node which is consider the root of this subtree
+// 
+template<typename T>
+Node<T>&    AVLTree<T>::rightRotate(Node<T>*& z) {
+    Node<T>*    y = z->getLeft();
+    Node<T>*    T3 = z->getRight();
+    // rotate right
+    y->setRight(z);
+    z->setLeft(T3);
+    // TODO: Continue here, done rotate
+    // FIXME: check rotate direction
+}
 #endif //!__AVL_TREE_BASIC__

@@ -33,12 +33,13 @@ class   Node {
     Node<T>*      pRight;
     int     level;
     int     height;
+    int     balance = 0;
     // Constructor
 public:
-    Node() : pLeft(NULL), pRight(NULL), level(0), height(0) {};
-    Node(T _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0) {};
-    Node(T& _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0) {};
-    Node(Node<T>& n) : data(n.data), pLeft(n.pLeft), pRight(n.pRight), level(n.level), height(n.height) {};
+    Node() : pLeft(NULL), pRight(NULL), level(0), height(0), balance(0) {};
+    Node(T _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0), balance(0) {};
+    Node(T& _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0), balance(0) {};
+    Node(Node<T>& n) : data(n.data), pLeft(n.pLeft), pRight(n.pRight), level(n.level), height(n.height), balance(n.balance) {};
     // Operator
     Node&   operator=(const T& _data);
     Node&   operator=(const Node<T>& n);
@@ -48,20 +49,15 @@ public:
     void    setRight(Node<T>* rChild)   { pRight = rChild;  }
     void    setLevel(int _level)        { level = _level;   }
     void    setHeight(int _h)           { height = _h;      }
+    void    setBalance(ing _b)          { balance = _b;     }
     // Get function
     T&      getData()   { return data;      }
     Node<T>*getLeft()   { return pLeft;     }
     Node<T>*getRight()  { return pRight;    }
     int     getLevel()  { return level;     }
     int     getHeight() { return height;    }
-    friend std::ostream& operator<< <T>(std::ostream& out, const Node<T> node);
+    int     getBalance(){ return balance;   }
 };
-
-template<typename T>
-std::ostream& operator<< <T> (std::ostream& out, const Node<T> node) {
-    cout << node.data << '\n';
-    return out;
-}
 
 template<typename T>
 Node<T>& Node<T>::operator=(const T& _data) {
@@ -82,6 +78,7 @@ Node<T>& Node<T>::operator=(const Node<T>& _n) {
     pRight  = _n.Right;
     height  = _n.height;
     level   = _n.level;
+    balance = _n.balance;
     return *this;
 }
 
