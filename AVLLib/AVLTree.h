@@ -51,6 +51,7 @@ class   Node {
     // Constructor
 public:
     Node() : pLeft(NULL), pRight(NULL), level(0), height(0) {};
+    Node(T _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0) {};
     Node(T& _data) : data(_data), pLeft(NULL), pRight(NULL), level(0), height(0) {};
     Node(Node<T>& n) : data(n.data), pLeft(n.pLeft), pRight(n.pRight), level(n.level), height(n.height) {};
     // Operator

@@ -7,8 +7,7 @@
 using namespace std;
 
 int main() {
-    Node<int> a;
-    a = 7;
-    cout << ;
+    Node<int> a(7);
+    cout << a.getData();
     return 0;
 }
