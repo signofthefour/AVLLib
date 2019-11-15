@@ -8,6 +8,6 @@ using namespace std;
 
 int main() {
     Node<int> a(7);
-    cout << a.getData();
+    cout << a;
     return 0;
 }
