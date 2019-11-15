@@ -56,8 +56,26 @@ public:
     // Operator
     Node&   operator=(const T& _data);
     Node&   operator=(const Node<T>& n);
+    // Set function
+    void    setData(T& a) {data = a;}
+    void    setLeft(Node<T>* lChild)    { pLeft = lChild;   }
+    void    setRight(Node<T>* rChild)   { pRight = rChild;  }
+    void    setLevel(int _level)        { level = _level;   }
+    void    setHeight(int _h)           { height = _h;      }
+    // Get function
+    T&      getData()   { return data;      }
+    Node<T>*getLeft()   { return pLeft;     }
+    Node<T>*getRight()  { return pRight;    }
+    int     getLevel()  { return level;     }
+    int     getHeight() { return height;    }
     friend std::ostream& operator<<(std::ostream& out, const Node<T> &f1);
 };
+
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const Node<T> &node) {
+    cout << node.data << '\n';
+    return out; 
+}
 
 template<typename T>
 Node<T>& Node<T>::operator=(const T& _data) {
@@ -79,12 +97,6 @@ Node<T>& Node<T>::operator=(const Node<T>& _n) {
     height  = _n.height;
     level   = _n.level;
     return *this;
-}
-
-template<typename T>
-std::ostream& operator<<(std::ostream& out, const Node<T> &node) {
-    cout << node.data << '\n';
-    return out;
 }
 
 #endif //!__AVL_TREE_BASIC__

@@ -9,6 +9,6 @@ using namespace std;
 int main() {
     Node<int> a;
     a = 7;
-    cout << a;
+    cout << ;
     return 0;
 }
