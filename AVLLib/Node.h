@@ -21,21 +21,6 @@
 
 using namespace std;
 
-/**TreeException
- * type: Class
- * use: handle exception in process with tree
- * note: it contains both error code and error message
-*/
-class TreeException {
-    int     _error;
-    string  _text;
-public:
-    TreeException() : _error(0), _text("Success") {}
-    TreeException(int err) : _error(err), _text("Unknown Error") {}
-    TreeException(int err, const char* text) : _error(err), _text(text) {}
-    int getError() { return _error; }
-    string& getErrorText() { return _text; }
-};
 /** Node
  * type: Class
  * use: store in for of a node in tree with template
@@ -69,11 +54,11 @@ public:
     Node<T>*getRight()  { return pRight;    }
     int     getLevel()  { return level;     }
     int     getHeight() { return height;    }
-    friend std::ostream& operator<<(std::ostream& out, Node<T> &node);
+    friend std::ostream& operator<< <T>(std::ostream& out, const Node<T> node);
 };
 
 template<typename T>
-std::ostream& operator<<(std::ostream& out, Node<T>& node) {
+std::ostream& operator<< <T> (std::ostream& out, const Node<T> node) {
     cout << node.data << '\n';
     return out;
 }
